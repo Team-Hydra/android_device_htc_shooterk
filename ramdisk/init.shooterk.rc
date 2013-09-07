@@ -140,7 +140,7 @@ on boot
 
     # flashlight
     chown system camera /sys/class/leds/flashlight/brightness
-    chmod 0660 /sys/class/leds/flashlight/brightness
+    chmod 0666 /sys/class/leds/flashlight/brightness
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
@@ -186,6 +186,10 @@ on boot
 
     chown system /sys/devices/platform/rs300000a7.65536/force_sync
     chown system /sys/devices/platform/rs300000a7.65536/sync_sts
+
+    #Vibrator
+    chown system system sys/devices/platform/msm_ssbi.0/pm8058-core/pm8xxx-vib/amp
+    chmod 666 sys/devices/platform/msm_ssbi.0/pm8058-core/pm8xxx-vib/amp
 
 # Force loading of modem and Q6 images
 service load-modem /system/bin/load-modem.sh

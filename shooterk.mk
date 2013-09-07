@@ -26,8 +26,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/ramdisk/init.shooterk.rc:root/init.shooterk.rc \
     $(COMMON_PATH)/ramdisk/init.shooterk.usb.rc:root/init.shooterk.usb.rc \
     $(COMMON_PATH)/ramdisk/ueventd.shooterk.rc:root/ueventd.shooterk.rc \
-    $(COMMON_PATH)/ramdisk/fstab.shooterk:root/fstab.shooterk \
-    $(COMMON_PATH)/ramdisk/remount.shooterk:root/remount.shooterk
+    $(COMMON_PATH)/ramdisk/fstab.shooterk:root/fstab.shooterk
 
 ## recovery and custom charging
 PRODUCT_COPY_FILES += \
