@@ -58,7 +58,7 @@ on init
 
 on fs
     # mount all mcc partitions
-    mount_all /fstab.shooter
+    mount_all /fstab.shooterk
 
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
