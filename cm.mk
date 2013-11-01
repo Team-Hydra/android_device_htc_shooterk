@@ -5,9 +5,6 @@ PRODUCT_PACKAGES := \
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/cdma.mk)
-
 # Inherit device configuration
 $(call inherit-product, device/htc/shooterk/shooterk.mk)
 
