@@ -43,7 +43,7 @@ BOARD_HAVE_SQN_WIMAX := true
 
 # Kernel Details
 TARGET_KERNEL_CONFIG := shooter_defconfig
-BOARD_KERNEL_CMDLINE := console=ttyHSL0 androidboot.hardware=shooterk no_console_suspend=1
+BOARD_KERNEL_CMDLINE := console=ttyHSL0 androidboot.hardware=shooterk no_console_suspend=1 androidboot.selinux=permissive
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/htc/shooterk
