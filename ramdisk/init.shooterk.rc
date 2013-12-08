@@ -1,22 +1,19 @@
 import init.shooterk.usb.rc
 
 on init
+    mkdir /mnt/media_rw 0770 media_rw media_rw
     mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
-    mkdir /storage 0550 system sdcard_r
-    mkdir /storage/sdcard0 0700 system system
     mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-
     mkdir /storage/sdcard0 0700 root root
     mkdir /storage/usbdisk 0700 root root
 
-    export EXTERNAL_STORAGE /storage/sdcard0:/storage/usbdisk0
-    
+    export EXTERNAL_STORAGE /storage/sdcard0
+
     # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
-
-    symlink /storage/usbdisk /usbdisk0
-    symlink /storage/usbdisk /mnt/usbdisk0
+    symlink /storage/usbdisk /usbdisk
+    symlink /storage/usbdisk /mnt/usbdisk
 
     #8x60: firmware
     rm /vendor
@@ -228,15 +225,6 @@ service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
     disabled
     oneshot
 
-#sdcard daemon
-service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
-    class late_start
-    disabled
-
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
-    class late_start
-    disabled
-
 service dhcpcd_p2p /system/bin/dhcpcd -aABKL
     class main
     disabled
@@ -277,6 +265,15 @@ service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p27 /dev/block/mmcblk0p28 /dev/block/mmcblk0p19
     class core
     user root
+
+#sdcard daemon
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard0 /storage/sdcard0
+    class late_start
+    disabled
+
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk /storage/usbdisk
+    class late_start
+    disabled
 
 service modem /system/bin/wireless_modem
     user system
